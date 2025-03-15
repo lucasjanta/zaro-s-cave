@@ -1,27 +1,195 @@
-[gd_scene load_steps=5 format=3 uid="uid://b5ttv7v52lulc"]
+[gd_scene load_steps=14 format=4 uid="uid://b5ttv7v52lulc"]
 
 [ext_resource type="Script" path="res://scripts/Characters/player.gd" id="1_d0jo5"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_nlaae"]
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_imtsv"]
+_data = PackedByteArray("AAADAAUAAAABAAAAMAAAADAAAAC4AAAAUklGRrAAAABXRUJQVlA4TKQAAAAvL8ALEBcwzrMyaPMfgAdXse3GzU03XIHQRSoCJR9CExCrTTO2kqYEIvqvsG3bRune1RlsIcU4BbaN7yIKVo/3B8efXY9UDLNjo8PoDJNjk6OTM2RnzE7KzjM5khxNDqeMtzk3wbhqME57pxhHoH0U42A7IN9qvPvBm0QXBM5sjJzZFDkbc+RM/u8NIQo7inRh3Z/B6AE6RaQcFimCMyi8BajWAA==")
+size_override = Vector2(48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j3wsa"]
+atlas = SubResource("PortableCompressedTexture2D_imtsv")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mw4k6"]
+atlas = SubResource("PortableCompressedTexture2D_imtsv")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n0akk"]
+atlas = SubResource("PortableCompressedTexture2D_imtsv")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g1h5r"]
+atlas = SubResource("PortableCompressedTexture2D_imtsv")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qyji1"]
+atlas = SubResource("PortableCompressedTexture2D_imtsv")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gjiyd"]
+atlas = SubResource("PortableCompressedTexture2D_imtsv")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_afx7m"]
+atlas = SubResource("PortableCompressedTexture2D_imtsv")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h0l6o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j3wsa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mw4k6")
+}],
+"loop": true,
+"name": &"first finger",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n0akk")
+}],
+"loop": true,
+"name": &"fist",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g1h5r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qyji1")
+}],
+"loop": true,
+"name": &"second finger",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gjiyd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_afx7m")
+}],
+"loop": true,
+"name": &"third finger",
+"speed": 10.0
+}]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_85cv6"]
+_data = PackedByteArray("AAADAAUAAAABAAAAIAAAACAAAACYAAAAUklGRpAAAABXRUJQVlA4TIQAAAAvH8AHECcgJCC88D9a4KpAgJDlf0WCAYEA4b9FggZN8x8A4EdVg4PYtoLo0YDHpwA0+PMS2D8W+FB3A0T0fwJwXmkXoMpegklaElMH7iaYB6N1L+a80mujdYl5Ry56jUYby3Yz55WWRuvygnlgPxMkacn+DdoFAKoUQEoF2z9AEiB5cwg=")
+size_override = Vector2(32, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3mvae"]
-size = Vector2(8, 8)
+size = Vector2(26, 30)
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_f06dc"]
 properties/0/path = NodePath(".:position")
 properties/0/spawn = true
 properties/0/replication_mode = 1
+properties/1/path = NodePath("LeftHandContainer:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("LeftHandContainer/AnimatedSprite2D:flip_h")
+properties/2/spawn = true
+properties/2/replication_mode = 1
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_d0jo5")
 
+[node name="RightHandContainer" type="Node2D" parent="."]
+visible = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="RightHandContainer"]
+texture_filter = 1
+position = Vector2(-11, 7)
+rotation = 3.14159
+sprite_frames = SubResource("SpriteFrames_h0l6o")
+animation = &"fist"
+flip_h = true
+metadata/_aseprite_wizard_interface_config_ = {
+"animation_section": false,
+"layer_section": false,
+"output_section": false,
+"pending_changes": {},
+"slice_section": false
+}
+metadata/_aseprite_wizard_config_ = {
+"embed_tex": true,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": true,
+"should_round_fps": true,
+"slice": "",
+"source": "res://assets/characters/right_hand.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "7e6cc34b2779b8f433375aebcc1bb5a2"
+
+[node name="mira" type="Marker2D" parent="RightHandContainer/AnimatedSprite2D"]
+position = Vector2(-5.24537e-07, -6)
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(8, 8)
-texture = SubResource("CanvasTexture_nlaae")
+texture_filter = 1
+texture = SubResource("PortableCompressedTexture2D_85cv6")
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": false,
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"embed_tex": true,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"slice": "",
+"source": "res://assets/characters/body.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "abd2be3c4845a1d640dc2bac2bddb4c2"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_3mvae")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_f06dc")
+
+[node name="LeftHandContainer" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="LeftHandContainer"]
+texture_filter = 1
+position = Vector2(24, -1.19209e-07)
+rotation = 1.5708
+scale = Vector2(1.23624, 1.23624)
+sprite_frames = SubResource("SpriteFrames_h0l6o")
+animation = &"fist"
+flip_h = true
+metadata/_aseprite_wizard_interface_config_ = {
+"animation_section": false,
+"layer_section": false,
+"output_section": false,
+"pending_changes": {},
+"slice_section": false
+}
+metadata/_aseprite_wizard_config_ = {
+"embed_tex": true,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": true,
+"should_round_fps": true,
+"slice": "",
+"source": "res://assets/characters/right_hand.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "7e6cc34b2779b8f433375aebcc1bb5a2"
+
+[node name="mira" type="Marker2D" parent="LeftHandContainer/AnimatedSprite2D"]
+position = Vector2(-5.24537e-07, -6)

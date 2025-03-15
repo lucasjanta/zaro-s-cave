@@ -21,7 +21,6 @@ func _on_host_button_pressed():
 			$MultiplayerSpawner.spawn(pid)
 	)
 	$MultiplayerSpawner.spawn(multiplayer.get_unique_id())
-
 	multiplayer_ui.hide()
 
 func _on_join_button_pressed():
